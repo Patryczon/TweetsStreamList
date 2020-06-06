@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion Versions.compileSdk
     defaultConfig {
         applicationId ApplicationId.id
         minSdkVersion Versions.minSdk
@@ -16,6 +17,24 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildTypes.each {
+        it.buildConfigField 'String', 'TwitterConsumerKey', TwitterConsumerKey
+        it.buildConfigField 'String', 'TwitterConsumerSecretKey', TwitterConsumerSecretKey
+        it.buildConfigField 'String', 'TwitterToken', TwitterToken
+        it.buildConfigField 'String', 'TwitterTokenSecret', TwitterTokenSecret
+    }
+    flavorDimensions "dataSource"
+    productFlavors {
+        mockedData {
+            applicationIdSuffix = ".mock"
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            dimension "dataSource"
+        }
+        apiData {
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            dimension "dataSource"
         }
     }
 }

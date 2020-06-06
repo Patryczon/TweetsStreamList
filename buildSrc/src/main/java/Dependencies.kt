@@ -4,6 +4,7 @@ object ApplicationId {
 
 object Modules {
     val app = ":app"
+    val data = ":data"
 }
 
 object Releases {
@@ -41,7 +42,8 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid}"
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
-    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     val koinScope = "org.koin:koin-androidx-scope${Versions.koin}"
     val gson = "com.google.code.gson:gson:${Versions.gson}"
