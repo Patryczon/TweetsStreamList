@@ -5,6 +5,7 @@ object ApplicationId {
 object Modules {
     val app = ":app"
     val data = ":data"
+    val twitterRepository = ":twitterrepository"
 }
 
 object Releases {

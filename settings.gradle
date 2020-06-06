@@ -1,2 +1,2 @@
-include Modules.app, Modules.data
+include Modules.app, Modules.data, Modules.twitterRepository
 rootProject.name='TweetsStreamList'
