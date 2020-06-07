@@ -45,6 +45,8 @@ object Libraries {
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
     val loggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val koin = "org.koin:koin-core:${Versions.koin}"
+    val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     val koinScope = "org.koin:koin-androidx-scope${Versions.koin}"
     val gson = "com.google.code.gson:gson:${Versions.gson}"

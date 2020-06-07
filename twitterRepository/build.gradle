@@ -23,11 +23,11 @@ android {
     }
     flavorDimensions "dataSource"
     productFlavors {
-        mockedData {
+        mock {
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
             dimension "dataSource"
         }
-        apiData {
+        api {
             testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
             dimension "dataSource"
         }
@@ -39,5 +39,12 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Libraries.kotlin
     implementation Libraries.ktxCore
+    implementation Libraries.koinScope
+    implementation Libraries.koin
+    implementation Libraries.koinAndroid
+    implementation Libraries.retrofit
+    implementation Libraries.gson
+    implementation Libraries.gsonConverter
+    implementation Libraries.okHttp
     testImplementation TestLibraries.junit
 }
