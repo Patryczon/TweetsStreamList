@@ -25,18 +25,6 @@ android {
         it.buildConfigField 'String', 'TwitterToken', TwitterToken
         it.buildConfigField 'String', 'TwitterTokenSecret', TwitterTokenSecret
     }
-    flavorDimensions "dataSource"
-    productFlavors {
-        mockedData {
-            applicationIdSuffix = ".mock"
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            dimension "dataSource"
-        }
-        apiData {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            dimension "dataSource"
-        }
-    }
 }
 
 dependencies {
@@ -46,5 +34,6 @@ dependencies {
     implementation Libraries.ktxCore
     implementation SupportLibraries.constraint
     implementation SupportLibraries.recyclerview
+    implementation project(path: Modules.data)
     testImplementation TestLibraries.junit
 }

@@ -12,8 +12,8 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 data class User (
 
-	val id : Int,
-	val id_str : Int,
+	val id : Long,
+	val id_str : Long,
 	val name : String,
 	val screen_name : String,
 	val location : String,
@@ -41,7 +41,6 @@ data class User (
 	val profile_link_color : String,
 	val profile_sidebar_border_color : String,
 	val profile_sidebar_fill_color : String,
-	val profile_text_color : Int,
 	val profile_use_background_image : Boolean,
 	val profile_image_url : String,
 	val profile_image_url_https : String,

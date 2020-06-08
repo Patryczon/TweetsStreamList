@@ -5,6 +5,7 @@ object ApplicationId {
 object Modules {
     val app = ":app"
     val data = ":data"
+    val tweetsRepository = ":tweetsRepository"
 }
 
 object Releases {
@@ -33,6 +34,8 @@ object Versions {
     val rxandroid = "3.0.0"
     val ktx = "1.3.0"
     val okHttp = "4.7.2"
+    val signPost = "1.1.0"
+    val signPostCore ="1.2.1.2"
 }
 
 object Libraries {
@@ -42,15 +45,17 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid}"
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
-    val loggingInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val koin = "org.koin:koin-core:${Versions.koin}"
+    val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-    val koinScope = "org.koin:koin-androidx-scope${Versions.koin}"
+    val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
     val gson = "com.google.code.gson:gson:${Versions.gson}"
     val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
-
+    val signPost = "se.akerfeldt:okhttp-signpost:${Versions.signPost}"
+    val signPostCore = "oauth.signpost:signpost-core:${Versions.signPostCore}"
 }
 
 object SupportLibraries {

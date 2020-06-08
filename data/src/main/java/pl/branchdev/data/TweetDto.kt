@@ -13,21 +13,20 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 data class TweetDto (
 
     val created_at : String,
-    val id : Int,
-    val id_str : Int,
+    val id : Long,
+    val id_str : Long,
     val text : String,
     val display_text_range : List<Int>,
     val source : String,
     val truncated : Boolean,
-    val in_reply_to_status_id : Int,
-    val in_reply_to_status_id_str : Int,
-    val in_reply_to_user_id : Int,
-    val in_reply_to_user_id_str : Int,
+    val in_reply_to_status_id : Long,
+    val in_reply_to_status_id_str : Long,
+    val in_reply_to_user_id : Long,
+    val in_reply_to_user_id_str : Long,
     val in_reply_to_screen_name : String,
     val user : User,
     val geo : String,
     val coordinates : String,
-    val place : String,
     val contributors : String,
     val is_quote_status : Boolean,
     val quote_count : Int,
@@ -39,5 +38,5 @@ data class TweetDto (
     val possibly_sensitive : Boolean,
     val filter_level : String,
     val lang : String,
-    val timestamp_ms : Int
+    val timestamp_ms : Long
 )
