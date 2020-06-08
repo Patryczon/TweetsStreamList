@@ -1,38 +1,23 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion Versions.compileSdk
-
-
     defaultConfig {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        consumerProguardFiles "consumer-rules.pro"
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    flavorDimensions "dataSource"
-    productFlavors {
-        mock {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            dimension "dataSource"
-        }
-        api {
-            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-            dimension "dataSource"
-        }
-    }
-
 }
 
 dependencies {
@@ -46,5 +31,10 @@ dependencies {
     implementation Libraries.gson
     implementation Libraries.gsonConverter
     implementation Libraries.okHttp
+    implementation Libraries.loggingInterceptor
+    implementation Libraries.rxjavaAdapter
+    implementation Libraries.signPost
+    implementation Libraries.signPostCore
+    implementation project(path: Modules.data)
     testImplementation TestLibraries.junit
 }
