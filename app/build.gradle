@@ -20,10 +20,10 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'TwitterConsumerKey', TwitterConsumerKey
-        it.buildConfigField 'String', 'TwitterConsumerSecretKey', TwitterConsumerSecretKey
-        it.buildConfigField 'String', 'TwitterToken', TwitterToken
-        it.buildConfigField 'String', 'TwitterTokenSecret', TwitterTokenSecret
+        it.buildConfigField 'String', 'twitterConsumerKey', twitterConsumerKey
+        it.buildConfigField 'String', 'twitterConsumerSecretKey', twitterConsumerSecretKey
+        it.buildConfigField 'String', 'twitterToken', twitterToken
+        it.buildConfigField 'String', 'twitterTokenSecret', twitterTokenSecret
     }
 }
 

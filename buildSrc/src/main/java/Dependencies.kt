@@ -35,7 +35,8 @@ object Versions {
     val ktx = "1.3.0"
     val okHttp = "4.7.2"
     val signPost = "1.1.0"
-    val signPostCore ="1.2.1.2"
+    val signPostCore = "1.2.1.2"
+    val lifecycleExtensions = "1.1.1"
 }
 
 object Libraries {
@@ -45,7 +46,8 @@ object Libraries {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid}"
     val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
-    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val koin = "org.koin:koin-core:${Versions.koin}"
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
@@ -56,6 +58,7 @@ object Libraries {
     val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     val signPost = "se.akerfeldt:okhttp-signpost:${Versions.signPost}"
     val signPostCore = "oauth.signpost:signpost-core:${Versions.signPostCore}"
+    val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycleExtensions}"
 }
 
 object SupportLibraries {
