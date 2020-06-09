@@ -8,7 +8,7 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
-import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
+import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeCounter
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounterBatchHandler
 

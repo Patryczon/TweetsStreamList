@@ -10,6 +10,6 @@ val twitterRepositoryModule = module {
         if (BuildConfig.FLAVOR.contains("mock"))
             MockTwitterRepository()
         else
-            ApiTwitterRepository(get(), get())
+            ApiTwitterRepository(get(), get(), get())
     }
 }

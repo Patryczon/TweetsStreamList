@@ -61,5 +61,8 @@ dependencies {
     implementation Libraries.reactiveNetwork
     implementation project(path: Modules.data)
     implementation project(path: Modules.tweetsRepository)
+    implementation project(path: Modules.common)
+    testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.junit
 }

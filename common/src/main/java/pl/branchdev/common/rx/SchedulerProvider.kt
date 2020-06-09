@@ -1,4 +1,4 @@
-package pl.branchdev.tweetsstreamlist.rx
+package pl.branchdev.common.rx
 
 import io.reactivex.Scheduler
 

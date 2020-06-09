@@ -2,7 +2,7 @@ package pl.branchdev.tweetsstreamlist.timeSpan
 
 import io.reactivex.Single
 import io.reactivex.disposables.Disposable
-import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
+import pl.branchdev.common.rx.SchedulerProvider
 import java.util.concurrent.TimeUnit
 
 class TimeSpanCounter(

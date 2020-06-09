@@ -8,8 +8,8 @@ import pl.branchdev.tweetsrepository.api.ApiConfigurationData
 import pl.branchdev.tweetsrepository.di.networkModule
 import pl.branchdev.tweetsrepository.di.twitterRepositoryModule
 import pl.branchdev.tweetsstreamlist.BuildConfig
-import pl.branchdev.tweetsstreamlist.rx.AppSchedulerProvider
-import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
+import pl.branchdev.common.rx.AppSchedulerProvider
+import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanBatchHandler
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounterBatchHandler
 import pl.branchdev.tweetsstreamlist.tweetsList.TweetListViewModel

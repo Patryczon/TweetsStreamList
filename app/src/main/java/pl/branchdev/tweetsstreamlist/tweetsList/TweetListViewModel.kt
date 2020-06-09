@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import pl.branchdev.tweetsrepository.TwitterRepository
-import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
+import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanBatchHandler
 import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounter
 

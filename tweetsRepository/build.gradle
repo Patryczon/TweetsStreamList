@@ -47,5 +47,6 @@ dependencies {
     implementation Libraries.signPost
     implementation Libraries.signPostCore
     implementation project(path: Modules.data)
+    implementation project(path: Modules.common)
     testImplementation TestLibraries.junit
 }
