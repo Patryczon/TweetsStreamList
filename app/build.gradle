@@ -20,10 +20,27 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'TwitterConsumerKey', TwitterConsumerKey
-        it.buildConfigField 'String', 'TwitterConsumerSecretKey', TwitterConsumerSecretKey
-        it.buildConfigField 'String', 'TwitterToken', TwitterToken
-        it.buildConfigField 'String', 'TwitterTokenSecret', TwitterTokenSecret
+        it.buildConfigField 'String', 'twitterConsumerKey', twitterConsumerKey
+        it.buildConfigField 'String', 'twitterConsumerSecretKey', twitterConsumerSecretKey
+        it.buildConfigField 'String', 'twitterToken', twitterToken
+        it.buildConfigField 'String', 'twitterTokenSecret', twitterTokenSecret
+        it.buildConfigField 'String', 'baseUrl', baseUrl
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions "dataSource"
+    productFlavors {
+        mockedData {
+            applicationIdSuffix = ".mock"
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            dimension "dataSource"
+        }
+        apiData {
+            testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+            dimension "dataSource"
+        }
     }
 }
 
@@ -34,6 +51,18 @@ dependencies {
     implementation Libraries.ktxCore
     implementation SupportLibraries.constraint
     implementation SupportLibraries.recyclerview
+    implementation Libraries.lifecycleExtensions
+    implementation Libraries.rxjava
+    implementation Libraries.rxandroid
+    implementation Libraries.koinScope
+    implementation Libraries.koin
+    implementation Libraries.koinAndroid
+    implementation Libraries.koinViewModel
+    implementation Libraries.reactiveNetwork
     implementation project(path: Modules.data)
+    implementation project(path: Modules.tweetsRepository)
+    implementation project(path: Modules.common)
+    testImplementation TestLibraries.mockitoInline
+    testImplementation TestLibraries.mockitoKotlin
     testImplementation TestLibraries.junit
 }

@@ -1,24 +1,43 @@
 package pl.branchdev.tweetsstreamlist
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.rxjava3.schedulers.Schedulers
-import org.koin.android.ext.android.inject
-import pl.branchdev.tweetsrepository.TwitterRepository
+import androidx.lifecycle.Observer
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import pl.branchdev.tweetsstreamlist.tweetsList.Tweet
+import pl.branchdev.tweetsstreamlist.tweetsList.TweetAdapter
+import pl.branchdev.tweetsstreamlist.tweetsList.TweetListViewModel
+import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
 
 class MainActivity : AppCompatActivity() {
+    private val tweetListViewModel: TweetListViewModel by viewModel()
+    private val tweetsAdapter = TweetAdapter()
+    private val tweetsListLayoutManager by lazy { LinearLayoutManager(this) }
+    private val tweetListObserver = Observer<List<Tweet>> { tweetsAdapter.updateTweets(it) }
 
-    val repository: TwitterRepository by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        repository.statusesStreamObservable().subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.io())
-            .subscribe({
-                Log.i("tweet", it.id.toString())
-            }, {
-                Log.e("error", it.message)
-            }, {})
+        initTweetList()
+        setupViewModel()
+    }
+
+
+    private fun setupViewModel() {
+        tweetListViewModel.tweetsLiveData.observe(this, tweetListObserver)
+    }
+
+    private fun initTweetList() {
+        tweetsList.apply {
+            layoutManager = tweetsListLayoutManager
+            adapter = tweetsAdapter
+        }
     }
 }

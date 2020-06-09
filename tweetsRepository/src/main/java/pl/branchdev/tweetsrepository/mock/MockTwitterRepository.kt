@@ -1,11 +1,39 @@
 package pl.branchdev.tweetsrepository.mock
 
 import TweetDto
-import io.reactivex.rxjava3.core.Observable
+import io.reactivex.Observable
 import pl.branchdev.tweetsrepository.TwitterRepository
 
 class MockTwitterRepository : TwitterRepository {
     override fun statusesStreamObservable(): Observable<TweetDto> {
-        TODO("Not yet implemented")
+        val tweetDto = TweetDto(
+            null,
+            1,
+            null,
+            "1",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null, null
+        )
+        return Observable.just(
+            tweetDto
+        ).repeat()
     }
 }

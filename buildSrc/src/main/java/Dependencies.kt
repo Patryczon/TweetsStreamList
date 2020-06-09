@@ -6,6 +6,7 @@ object Modules {
     val app = ":app"
     val data = ":data"
     val tweetsRepository = ":tweetsRepository"
+    val common = ":common"
 }
 
 object Releases {
@@ -21,7 +22,7 @@ object Versions {
     val appcompat = "1.1.0"
     val recyclerview = "1.0.0"
     val kotlin = "1.3.50"
-    val rxjava = "3.0.4"
+    val rxjava = "2.2.19"
     val rxkotlin = "2.3.0"
     val retrofit = "2.9.0"
     val loggingInterceptor = "3.12.1"
@@ -31,21 +32,24 @@ object Versions {
     val mockitoInline = "2.24.5"
     val constraint = "1.1.3"
     val gson = "2.8.6"
-    val rxandroid = "3.0.0"
+    val rxandroid = "2.1.1"
     val ktx = "1.3.0"
     val okHttp = "4.7.2"
     val signPost = "1.1.0"
-    val signPostCore ="1.2.1.2"
+    val signPostCore = "1.2.1.2"
+    val lifecycleExtensions = "1.1.1"
+    val reactiveNetwork = "3.0.8"
 }
 
 object Libraries {
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
-    val rxjava = "io.reactivex.rxjava3:rxjava:${Versions.rxjava}"
+    val rxjava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava}"
     val rxkotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxkotlin}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val rxandroid = "io.reactivex.rxjava3:rxandroid:${Versions.rxandroid}"
-    val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:${Versions.retrofit}"
-    val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
+    val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
+    val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    val loggingInterceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     val koin = "org.koin:koin-core:${Versions.koin}"
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
@@ -56,6 +60,8 @@ object Libraries {
     val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     val signPost = "se.akerfeldt:okhttp-signpost:${Versions.signPost}"
     val signPostCore = "oauth.signpost:signpost-core:${Versions.signPostCore}"
+    val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycleExtensions}"
+    val reactiveNetwork = "com.github.pwittchen:reactivenetwork-rx2:${Versions.reactiveNetwork}"
 }
 
 object SupportLibraries {
