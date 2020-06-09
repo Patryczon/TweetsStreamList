@@ -1,6 +1,8 @@
 package pl.branchdev.tweetsstreamlist
 
 import android.app.Application
+import android.util.Log
+import io.reactivex.plugins.RxJavaPlugins
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -15,5 +17,6 @@ class TweetsApplication : Application() {
             androidContext(this@TweetsApplication)
             modules(modules)
         }
+        RxJavaPlugins.setErrorHandler { e -> Log.e("rxJavaError", e.message) }
     }
 }

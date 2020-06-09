@@ -1,3 +1,3 @@
 package pl.branchdev.tweetsstreamlist.tweetsList
 
-data class Tweet(val text: String)
+data class Tweet(val id: Long, val text: String)

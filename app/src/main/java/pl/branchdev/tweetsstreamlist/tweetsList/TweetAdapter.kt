@@ -2,11 +2,12 @@ package pl.branchdev.tweetsstreamlist.tweetsList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import pl.branchdev.tweetsstreamlist.R
 
 class TweetAdapter : RecyclerView.Adapter<TweetViewHolder>() {
-    private val tweets: MutableList<Tweet> = mutableListOf()
+    private var tweets: MutableList<Tweet> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -19,4 +20,11 @@ class TweetAdapter : RecyclerView.Adapter<TweetViewHolder>() {
     }
 
     override fun getItemCount(): Int = tweets.count()
+    fun updateTweets(list: List<Tweet>) {
+        val diffCallback = TweetsDiffUtil(tweets, list)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        tweets.clear()
+        tweets.addAll(list)
+        diffResult.dispatchUpdatesTo(this)
+    }
 }
