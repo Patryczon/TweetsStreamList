@@ -4,20 +4,22 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import pl.branchdev.tweetsrepository.TwitterRepository
+import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
+import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanBatchHandler
+import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounter
 
 class TweetListViewModel(
     private val repository: TwitterRepository,
-    private val connectionObserver: Observable<Boolean>
+    connectionObserver: Observable<Boolean>,
+    private val schedulerProvider: SchedulerProvider,
+    private val timeSpanBatchHandler: TimeSpanBatchHandler
 ) : ViewModel() {
     private var internetDisposable: Disposable
     private lateinit var statusesDisposable: Disposable
     private val tweets = mutableListOf<Tweet>()
     val tweetsLiveData by lazy { MutableLiveData<List<Tweet>>() }
-    private val timeSpans = mutableListOf<TimeSpanCounter>()
 
 
     init {
@@ -28,12 +30,11 @@ class TweetListViewModel(
             { Log.e("internetConnection", it?.message) })
     }
 
-    fun updateConnectionState(isConnected: Boolean) {
+    private fun updateConnectionState(isConnected: Boolean) {
         if (isConnected) {
             reconnectToStatusStream()
         } else {
-            timeSpans.forEach { timeSpan -> timeSpan.stopTimeCount() }
-            timeSpans.clear()
+            timeSpanBatchHandler.stopCounting()
         }
     }
 
@@ -44,37 +45,39 @@ class TweetListViewModel(
     }
 
     private fun connectToStatusesStream() {
-        statusesDisposable = repository.statusesStreamObservable().subscribeOn(Schedulers.io())
-            .observeOn(Schedulers.computation())
-            .map {
-                return@map it.mapToTweet()
-            }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                createLifeTimeSpanForTweet(it)
-                tweets.add(0, it)
-                tweetsLiveData.value = tweets
-            }, {
-                Log.e("error", it?.message)
-            }, {})
+        statusesDisposable =
+            repository.statusesStreamObservable().subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.computation())
+                .map {
+                    return@map it.mapToTweet()
+                }
+                .observeOn(schedulerProvider.ui())
+                .subscribe({
+                    createLifeTimeSpanForTweet(it)
+                    tweets.add(0, it)
+                    tweetsLiveData.value = tweets
+                }, {
+                    Log.e("error", it?.message)
+                }, {})
     }
 
     private fun createLifeTimeSpanForTweet(tweet: Tweet) {
-        val timeSpanCounter = TimeSpanCounter()
+        val timeSpanCounter =
+            TimeSpanCounter(
+                schedulerProvider = schedulerProvider
+            )
         timeSpanCounter.timeElapsedAction = {
             tweets.remove(tweet)
             tweetsLiveData.postValue(tweets)
-            timeSpans.remove(timeSpanCounter)
+            timeSpanBatchHandler.removeCounter(timeSpanCounter)
         }
-        timeSpans.add(timeSpanCounter)
-        timeSpanCounter.startTimeCount()
+        timeSpanBatchHandler.addCounter(timeSpanCounter)
     }
 
     override fun onCleared() {
         super.onCleared()
         statusesDisposable.dispose()
-        timeSpans.forEach { it.stopTimeCount() }
-        timeSpans.clear()
+        timeSpanBatchHandler.stopCounting()
         internetDisposable.dispose()
     }
 }

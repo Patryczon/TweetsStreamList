@@ -11,8 +11,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import pl.branchdev.tweetsstreamlist.connectivity.InternetConnectionReceiver
-import pl.branchdev.tweetsstreamlist.connectivity.InternetConnectionReceiver.Companion.IS_NETWORK_AVAILABLE
 import pl.branchdev.tweetsstreamlist.tweetsList.Tweet
 import pl.branchdev.tweetsstreamlist.tweetsList.TweetAdapter
 import pl.branchdev.tweetsstreamlist.tweetsList.TweetListViewModel
@@ -29,20 +27,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         initTweetList()
         setupViewModel()
-        listenToConnectionReciver()
     }
 
-    private fun listenToConnectionReciver() {
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-            object : BroadcastReceiver() {
-                override fun onReceive(context: Context, intent: Intent) {
-                    val isNetworkAvailable =
-                        intent.getBooleanExtra(IS_NETWORK_AVAILABLE, false)
-                    tweetListViewModel.updateConnectionState(isNetworkAvailable)
-                }
-            }, IntentFilter(InternetConnectionReceiver.NETWORK_AVAILABLE_ACTION)
-        )
-    }
 
     private fun setupViewModel() {
         tweetListViewModel.tweetsLiveData.observe(this, tweetListObserver)

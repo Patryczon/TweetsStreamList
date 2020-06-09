@@ -23,8 +23,7 @@ class TweetAdapter : RecyclerView.Adapter<TweetViewHolder>() {
     fun updateTweets(list: List<Tweet>) {
         val diffCallback = TweetsDiffUtil(tweets, list)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
-        tweets.clear()
-        tweets.addAll(list)
+        tweets = list.toMutableList()
         diffResult.dispatchUpdatesTo(this)
     }
 }

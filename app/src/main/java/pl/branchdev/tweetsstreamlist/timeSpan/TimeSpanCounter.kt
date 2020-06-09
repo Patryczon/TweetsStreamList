@@ -1,29 +1,29 @@
-package pl.branchdev.tweetsstreamlist.tweetsList
+package pl.branchdev.tweetsstreamlist.timeSpan
 
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
+import pl.branchdev.tweetsstreamlist.rx.SchedulerProvider
 import java.util.concurrent.TimeUnit
 
 class TimeSpanCounter(
     timeAmount: Long = 5L,
-    timeUnit: TimeUnit = TimeUnit.SECONDS
-) {
+    timeUnit: TimeUnit = TimeUnit.SECONDS,
+    schedulerProvider: SchedulerProvider
+) : TimeCounter {
     lateinit var timeElapsedAction: () -> Unit
     lateinit var timeDisposable: Disposable
     private var timeCounterDisposable: Single<*> =
-        Single.timer(timeAmount, timeUnit, Schedulers.computation())
-            .subscribeOn(Schedulers.computation())
-            .observeOn(AndroidSchedulers.mainThread())
+        Single.timer(timeAmount, timeUnit, schedulerProvider.computation())
+            .subscribeOn(schedulerProvider.computation())
+            .observeOn(schedulerProvider.ui())
 
 
-    fun startTimeCount() {
+    override fun startCount() {
         timeDisposable =
             timeCounterDisposable.subscribe({ timeElapsedAction() }, { timeDisposable.dispose() })
     }
 
-    fun stopTimeCount() {
+    override fun stopCount() {
         timeDisposable.dispose()
     }
 }

@@ -13,7 +13,6 @@ class TweetsApplication : Application() {
         super.onCreate()
         startKoin {
             androidLogger()
-            // use the Android context given there
             androidContext(this@TweetsApplication)
             modules(modules)
         }
