@@ -11,6 +11,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer
 import se.akerfeldt.okhttp.signpost.SigningInterceptor
+import java.util.concurrent.TimeUnit
 
 fun networkModule(apiConfiguration: ApiConfigurationData) = module {
     single { get<Retrofit>().create(TwitterApiService::class.java) }
@@ -50,6 +51,8 @@ private fun provideOkHttpClient(
     signInterceptor: SigningInterceptor
 ): OkHttpClient {
     return OkHttpClient.Builder().apply {
+        connectTimeout(60, TimeUnit.SECONDS)
+        readTimeout(60,TimeUnit.SECONDS)
         addInterceptor(signInterceptor)
         retryOnConnectionFailure(true)
     }.run { build() }

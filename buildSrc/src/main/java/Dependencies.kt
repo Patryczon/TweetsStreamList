@@ -39,6 +39,8 @@ object Versions {
     val signPostCore = "1.2.1.2"
     val lifecycleExtensions = "1.1.1"
     val reactiveNetwork = "3.0.8"
+    val rxBinding = "2.0.0"
+    val archCoreTesting = "2.1.0"
 }
 
 object Libraries {
@@ -62,6 +64,7 @@ object Libraries {
     val signPostCore = "oauth.signpost:signpost-core:${Versions.signPostCore}"
     val lifecycleExtensions = "android.arch.lifecycle:extensions:${Versions.lifecycleExtensions}"
     val reactiveNetwork = "com.github.pwittchen:reactivenetwork-rx2:${Versions.reactiveNetwork}"
+    val rxBinding = "com.jakewharton.rxbinding2:rxbinding:${Versions.rxBinding}"
 }
 
 object SupportLibraries {
@@ -74,4 +77,5 @@ object TestLibraries {
     val junit = "junit:junit:${Versions.junit}"
     val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInline}"
+    val archCoreTesting = "android.arch.core:core-testing:${Versions.archCoreTesting}"
 }
