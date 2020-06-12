@@ -1,11 +1,12 @@
 package pl.branchdev.tweetsrepository.api
 
-import TweetDto
+import pl.branchdev.data.TweetDto
 import com.google.gson.Gson
 import io.reactivex.Observable
 import okio.BufferedSource
 import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.tweetsrepository.TwitterRepository
+import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
 
@@ -21,7 +22,7 @@ class ApiTwitterRepository(
             .flatMap { mapResponseBodyToStringObservable(it.source()) }
             .retryWhen { throwable ->
                 throwable.flatMap {
-                    if (it is SocketTimeoutException)
+                    if (it is SocketTimeoutException || it is HttpException)
                         return@flatMap Observable.just(Object())
                     else
                         return@flatMap Observable.error<Throwable> { it }

@@ -1,6 +1,6 @@
 package pl.branchdev.tweetsrepository.mock
 
-import TweetDto
+import pl.branchdev.data.TweetDto
 import io.reactivex.Observable
 import pl.branchdev.tweetsrepository.TwitterRepository
 
@@ -34,6 +34,6 @@ class MockTwitterRepository : TwitterRepository {
         )
         return Observable.just(
             tweetDto
-        ).repeat()
+        )
     }
 }

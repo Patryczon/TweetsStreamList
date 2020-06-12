@@ -1,33 +1,18 @@
 package pl.branchdev.tweetsstreamlist.di
 
-import com.github.pwittchen.reactivenetwork.library.rx2.ReactiveNetwork
-import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import pl.branchdev.common.logger.ConsoleLogger
 import pl.branchdev.common.logger.LoggerProvider
 import pl.branchdev.common.rx.AppSchedulerProvider
 import pl.branchdev.common.rx.SchedulerProvider
+import pl.branchdev.tweetslists.di.viewModelsModule
+import pl.branchdev.tweetslists.timeSpan.TimeSpanBatchHandler
+import pl.branchdev.tweetslists.timeSpan.TimeSpanCounterBatchHandler
 import pl.branchdev.tweetsrepository.api.ApiConfigurationData
 import pl.branchdev.tweetsrepository.di.networkModule
 import pl.branchdev.tweetsrepository.di.twitterRepositoryModule
 import pl.branchdev.tweetsstreamlist.BuildConfig
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanBatchHandler
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounterBatchHandler
-import pl.branchdev.tweetsstreamlist.tweetsList.TweetListViewModel
 
-val viewModelsModule = module {
-    viewModel {
-        TweetListViewModel(
-            get(),
-            ReactiveNetwork.observeNetworkConnectivity(androidContext())
-                .subscribeOn(get<SchedulerProvider>().io())
-                .map { return@map it.available() }
-                .subscribeOn(get<SchedulerProvider>().io()), get(), get(),
-            get()
-        )
-    }
-}
 val utilsModule = module {
     single<SchedulerProvider> { AppSchedulerProvider() }
     single<TimeSpanBatchHandler> { TimeSpanCounterBatchHandler() }

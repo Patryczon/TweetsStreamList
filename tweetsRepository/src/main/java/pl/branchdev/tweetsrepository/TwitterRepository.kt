@@ -1,6 +1,6 @@
 package pl.branchdev.tweetsrepository
 
-import TweetDto
+import pl.branchdev.data.TweetDto
 import io.reactivex.Observable
 
 interface TwitterRepository {
