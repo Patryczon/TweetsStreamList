@@ -1,7 +1,7 @@
 package pl.branchdev.tweetsrepository.mock
 
-import pl.branchdev.data.TweetDto
 import io.reactivex.Observable
+import pl.branchdev.data.TweetDto
 import pl.branchdev.tweetsrepository.TwitterRepository
 
 class MockTwitterRepository : TwitterRepository {

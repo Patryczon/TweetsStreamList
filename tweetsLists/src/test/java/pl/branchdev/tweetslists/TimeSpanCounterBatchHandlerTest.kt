@@ -9,8 +9,8 @@ import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import pl.branchdev.common.rx.SchedulerProvider
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeCounter
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounterBatchHandler
+import pl.branchdev.tweetslists.timeSpan.TimeCounter
+import pl.branchdev.tweetslists.timeSpan.TimeSpanCounterBatchHandler
 
 class TimeSpanCounterBatchHandlerTest {
     private val testSchedulerComputation = TestScheduler()

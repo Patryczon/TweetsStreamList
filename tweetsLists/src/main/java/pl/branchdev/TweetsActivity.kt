@@ -16,7 +16,6 @@ import pl.branchdev.tweetslists.adapter.TweetAdapter
 import pl.branchdev.tweetslists.data.Tweet
 
 class TweetsActivity : AppCompatActivity() {
-
     private val tweetListViewModel: TweetListViewModel by viewModel()
     private val tweetsAdapter = TweetAdapter()
     private val tweetsListLayoutManager by lazy { LinearLayoutManager(this) }
