@@ -22,7 +22,6 @@ class TimeSpanCounter(
             .subscribeOn(schedulerProvider.computation())
             .observeOn(schedulerProvider.ui())
 
-
     override fun startCount() {
         timeDisposable =
             timeCounterDisposable.subscribe({ timeElapsedAction() }, { timeDisposable.dispose() })
