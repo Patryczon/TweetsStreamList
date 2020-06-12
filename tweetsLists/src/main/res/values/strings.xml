@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TweetsStreamList</string>
+    <string name="search_hint">Type your search phrase</string>
+    <string name="stream_disconnected">"Connection retrying "</string>
+    <string name="stream_connected">Connection established</string>
+    <string name="tweet_author">Created by %1$s</string>
+</resources>

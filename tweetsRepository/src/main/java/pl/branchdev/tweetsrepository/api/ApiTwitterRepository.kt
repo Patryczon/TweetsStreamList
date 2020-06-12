@@ -1,12 +1,14 @@
 package pl.branchdev.tweetsrepository.api
 
-import TweetDto
+import pl.branchdev.data.TweetDto
 import com.google.gson.Gson
 import io.reactivex.Observable
 import okio.BufferedSource
 import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.tweetsrepository.TwitterRepository
+import retrofit2.HttpException
 import java.io.IOException
+import java.net.SocketTimeoutException
 
 class ApiTwitterRepository(
     private val apiService: TwitterApiService,
@@ -14,11 +16,18 @@ class ApiTwitterRepository(
     private val schedulerProvider: SchedulerProvider
 ) :
     TwitterRepository {
-    override fun statusesStreamObservable(): Observable<TweetDto> =
-        apiService.statuses().subscribeOn(schedulerProvider.io())
+    override fun statusesStreamObservable(searchQuery: String): Observable<TweetDto> =
+        apiService.statuses(searchQuery).subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.computation())
             .flatMap { mapResponseBodyToStringObservable(it.source()) }
-            .map { gson.fromJson(it, TweetDto::class.java) }
+            .retryWhen { throwable ->
+                throwable.flatMap {
+                    if (it is SocketTimeoutException || it is HttpException)
+                        return@flatMap Observable.just(Object())
+                    else
+                        return@flatMap Observable.error<Throwable> { it }
+                }
+            }.map { gson.fromJson(it, TweetDto::class.java) }
 
 
     private fun mapResponseBodyToStringObservable(source: BufferedSource): Observable<String> {
@@ -29,6 +38,7 @@ class ApiTwitterRepository(
                 }
             } catch (e: IOException) {
                 e.printStackTrace()
+                it.onError(e)
             }
             it.onComplete()
         }

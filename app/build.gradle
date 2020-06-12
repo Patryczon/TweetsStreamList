@@ -49,20 +49,16 @@ dependencies {
     implementation Libraries.kotlin
     implementation SupportLibraries.appcompat
     implementation Libraries.ktxCore
-    implementation SupportLibraries.constraint
-    implementation SupportLibraries.recyclerview
     implementation Libraries.lifecycleExtensions
     implementation Libraries.rxjava
     implementation Libraries.rxandroid
     implementation Libraries.koinScope
     implementation Libraries.koin
     implementation Libraries.koinAndroid
-    implementation Libraries.koinViewModel
-    implementation Libraries.reactiveNetwork
-    implementation project(path: Modules.data)
-    implementation project(path: Modules.tweetsRepository)
+    implementation Libraries.rxBinding
     implementation project(path: Modules.common)
-    testImplementation TestLibraries.mockitoInline
-    testImplementation TestLibraries.mockitoKotlin
+    implementation project(path: Modules.tweetsList)
+    implementation project(path: Modules.tweetsRepository)
     testImplementation TestLibraries.junit
+    testImplementation TestLibraries.archCoreTesting
 }
