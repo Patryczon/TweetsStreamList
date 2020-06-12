@@ -51,4 +51,5 @@ dependencies {
     testImplementation TestLibraries.junit
     testImplementation TestLibraries.mockitoInline
     testImplementation TestLibraries.mockitoKotlin
+    testImplementation TestLibraries.archCoreTesting
 }

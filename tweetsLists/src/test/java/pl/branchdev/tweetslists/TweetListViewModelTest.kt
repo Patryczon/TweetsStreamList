@@ -14,8 +14,8 @@ import pl.branchdev.common.logger.LoggerProvider
 import pl.branchdev.common.rx.SchedulerProvider
 import pl.branchdev.data.TweetDto
 import pl.branchdev.tweetslists.data.Tweet
+import pl.branchdev.tweetslists.timeSpan.TimeSpanBatchHandler
 import pl.branchdev.tweetsrepository.TwitterRepository
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanBatchHandler
 
 class TweetListViewModelTest {
     private val mockedRepository: TwitterRepository = mock()
@@ -59,7 +59,7 @@ class TweetListViewModelTest {
 
     @Test
     fun `when connection subject emit true then tweets data should be cleared`() {
-        val tweet = Tweet(2, "")
+        val tweet = Tweet(2, "","")
         viewModel.tweetsLiveData.value = mutableListOf(tweet)
         testConnectionSubject.onNext(true)
         assertTrue(viewModel.tweetsLiveData.value.isNullOrEmpty())

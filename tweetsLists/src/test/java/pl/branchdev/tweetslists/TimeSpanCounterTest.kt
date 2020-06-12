@@ -10,7 +10,7 @@ import io.reactivex.schedulers.TestScheduler
 import org.junit.Before
 import org.junit.Test
 import pl.branchdev.common.rx.SchedulerProvider
-import pl.branchdev.tweetsstreamlist.timeSpan.TimeSpanCounter
+import pl.branchdev.tweetslists.timeSpan.TimeSpanCounter
 import java.util.concurrent.TimeUnit
 
 

@@ -60,5 +60,4 @@ dependencies {
     implementation project(path: Modules.tweetsList)
     implementation project(path: Modules.tweetsRepository)
     testImplementation TestLibraries.junit
-    testImplementation TestLibraries.archCoreTesting
 }
