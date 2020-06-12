@@ -1,4 +1,4 @@
-package pl.branchdev.tweetsstreamlist.timeSpan
+package pl.branchdev.tweetslists.timeSpan
 
 interface TimeCounter {
     fun startCount()

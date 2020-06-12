@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import pl.branchdev.tweetsrepository.api.ApiConfigurationData
+import pl.branchdev.tweetsrepository.api.Config.STREAM_TIME_OUT
 import pl.branchdev.tweetsrepository.api.TwitterApiService
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -51,8 +52,8 @@ private fun provideOkHttpClient(
     signInterceptor: SigningInterceptor
 ): OkHttpClient {
     return OkHttpClient.Builder().apply {
-        connectTimeout(60, TimeUnit.SECONDS)
-        readTimeout(60,TimeUnit.SECONDS)
+        connectTimeout(STREAM_TIME_OUT, TimeUnit.SECONDS)
+        readTimeout(STREAM_TIME_OUT, TimeUnit.SECONDS)
         addInterceptor(signInterceptor)
         retryOnConnectionFailure(true)
     }.run { build() }

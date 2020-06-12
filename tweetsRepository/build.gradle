@@ -42,7 +42,6 @@ dependencies {
     implementation Libraries.gson
     implementation Libraries.gsonConverter
     implementation Libraries.okHttp
-    implementation Libraries.loggingInterceptor
     implementation Libraries.rxjavaAdapter
     implementation Libraries.signPost
     implementation Libraries.signPostCore
