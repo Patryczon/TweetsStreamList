@@ -1,7 +1,6 @@
-package pl.branchdev.tweetslists
+package pl.branchdev.tweetslists.data
 
 import pl.branchdev.data.TweetDto
-import pl.branchdev.tweetslists.Tweet
 
 fun TweetDto.mapToTweet(): Tweet =
-    Tweet(this.id ?: 0L, this.text ?: "")
+    Tweet(this.id ?: 0L, this.text ?: "", this?.user?.name ?: "")

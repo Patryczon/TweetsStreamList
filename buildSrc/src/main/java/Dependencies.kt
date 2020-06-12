@@ -25,7 +25,6 @@ object Versions {
     const val kotlin = "1.3.72"
     const val rxjava = "2.2.19"
     const val retrofit = "2.9.0"
-    const val loggingInterceptor = "3.12.1"
     const val koin = "2.1.5"
     const val junit = "4.12"
     const val mockitoKotlin = "2.1.0"
@@ -49,8 +48,6 @@ object Libraries {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val rxandroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid}"
     const val rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
-    const val loggingInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
     const val koin = "org.koin:koin-core:${Versions.koin}"
     const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"

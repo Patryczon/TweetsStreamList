@@ -1,7 +1,7 @@
-package pl.branchdev.tweetslists
+package pl.branchdev.tweetslists.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import pl.branchdev.tweetslists.Tweet
+import pl.branchdev.tweetslists.data.Tweet
 
 class TweetsDiffUtil(
     private val oldList: List<Tweet>,
