@@ -9,7 +9,7 @@ Display tweets which will be deliveried by twitter stream API (https://stream.tw
   - TweetsList - functionality module with list functionality and things related to it,
   - App - android app module.
 # Screenshot
-![](application.gif)
+![](application.gif) ![](applicationLive.gif)
 # Build Variants
 Application has 2 builds flavours:
 - apiData - that module allow you to use MockedTwitterRepository as data source,
