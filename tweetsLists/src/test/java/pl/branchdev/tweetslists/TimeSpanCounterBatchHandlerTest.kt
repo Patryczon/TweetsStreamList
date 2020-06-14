@@ -36,7 +36,7 @@ class TimeSpanCounterBatchHandlerTest {
     }
 
     @Test
-    fun `when stop counting counter to a batch it call stop for every counter`() {
+    fun `when stop counting called on a batch it should call stop for every counter`() {
         val timeCounter: TimeCounter = mock()
         val timeCounter2: TimeCounter = mock()
         val timeCounterBatchHandler = TimeSpanCounterBatchHandler()
