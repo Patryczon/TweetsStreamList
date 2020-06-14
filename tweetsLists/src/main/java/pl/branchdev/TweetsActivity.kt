@@ -45,7 +45,6 @@ class TweetsActivity : AppCompatActivity() {
         subscriptionComposite.clear()
     }
 
-
     private fun setupViewModel() {
         tweetListViewModel.tweetsLiveData.observe(this, tweetListObserver)
     }

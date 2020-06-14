@@ -45,7 +45,7 @@ class TimeSpanCounterTest {
     }
 
     @Test
-    fun `when start time count and time not elapsed then elapsed action shouldn't be called`() {
+    fun `when start time count and time not elapsed yet then elapsed action shouldn't be called`() {
         val mockedAction: () -> Unit = mock()
         val timeSpanCounter =
             TimeSpanCounter(
@@ -59,7 +59,7 @@ class TimeSpanCounterTest {
     }
 
     @Test
-    fun `when start time count and dispose before time elapsed elapsed then elapsed action shouldn't be called`() {
+    fun `when counter is started and it stopped before time end then elapsed action shouldn't be called`() {
         val mockedAction: () -> Unit = mock()
         val timeSpanCounter =
             TimeSpanCounter(
